@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+:root {
+    /*------- Primary Colors --------*/
+    --moderate-blue: hsl(238, 40%, 52%);
+    --soft-red: hsl(358, 79%, 66%);
+    --light-grayish-blue: hsl(239, 57%, 85%);
+    --pale-red: hsl(357, 100%, 86%);
+
+    /*------- Neutral Colors --------*/
+    --dark-blue: hsl(212, 24%, 26%);
+    --grayish-blue: hsl(211, 10%, 45%);
+    --light-gray: hsl(223, 19%, 93%);
+    --very-light-gray: hsl(228, 33%, 97%);
+    --white: hsl(0, 0%, 100%);
+
+    /*------- Font size --------*/
+    --font-size: 1.6rem;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+.section {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--very-light-gray);
+    color: var(--grayish-blue);
+    font-size: var(--font-size);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 5rem 2rem 5rem 2rem;
+}
+
+.section .section-comment-div, .section .section-commenting-div {
+    max-width: 60rem;
+    width: 100%;
+    min-width: 40rem;
+    min-height: 5rem;
+    background-color: var(--white);
+    border-radius: .7rem;
+
+    display: flex;
+    padding: 2rem;
+    margin: 1rem 0;
+}
+
+.section .reply-div {
+    max-width: 60rem;
+    width: 100%;
+    min-width: 50rem;
+    height: 100%;
+
+    display: flex;
+}
+
+.reply-div .reply-div-line {
+    width: 10%;
+    padding: 1rem 0;
+}
+
+.reply-div .reply-div-line .line {
+    margin: 0 auto;
+    width: 0;
+    height: 100%;
+    border: .1rem solid var(--light-gray);
+}
+
+.reply-div .reply-div-content {
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.section .section-comment-div .comment-div-left {
+    width: 10%;
+    height: 70%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.section .section-comment-div .comment-div-left .comment-div-left-likes {
+    height: 100%;
+    background-color: var(--very-light-gray);
+    border-radius: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2rem;
+}
+
+.section .section-comment-div .comment-div-left .comment-div-left-likes a {
+    font-weight: 500;
+    padding: .5rem 1rem;
+    color: var(--light-grayish-blue);
+    text-decoration: none;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.section .section-comment-div .comment-div-left .comment-div-left-likes a:hover {
+    color: var(--moderate-blue);
+}
+
+.section .section-comment-div .comment-div-left .comment-div-left-likes p {
+    font-weight: 500;
+    padding: .5rem 1rem;
+    color: var(--moderate-blue);
+}
+
+.section .section-comment-div .comment-div-right {
+    width: 90%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.right-top-div {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: .5rem;
+}
+
+.right-top-div .information {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 60%;
+}
+
+.information div {
+    margin: 0 .5rem 0 0;
+}
+
+.right-top-div .information .right-top-img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+
+.right-top-div .information .right-top-img img{
+    width: 100%;
+}
+
+.right-top-div .information .right-top-username p {
+    font-weight: 500;
+    color: var(--dark-blue);
+}
+
+.right-top-div .information .right-top-username p span {
+    display: inline-block;
+    font-size: 1.3rem;
+    padding: .3rem .6rem;
+    font-weight: 500;
+    color: var(--white);
+    background-color: var(--moderate-blue);
+    border-radius: .3rem;
+}
+
+/*
+.right-top-div .right-top-date {
+    
+}
+*/
+
+.right-top-div .reply-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 40%;
+}
+
+.right-top-div .reply-btn .reply-comment, .right-top-div .reply-btn .edit-comment {
+    display: inline-block;
+    border: none;
+    background-color: transparent;
+    text-decoration: none;
+    color: var(--moderate-blue);
+    font-weight: 500;
+    transition: all .2s;
+    font-size: var(--font-size);
+    padding: .3rem;
+
+    cursor: pointer;
+}
+
+.right-top-div .reply-btn .delete-comment {
+    display: inline-block;
+    border: none;
+    background-color: transparent;
+    text-decoration: none;
+    color: var(--soft-red);
+    font-weight: 500;
+    transition: all .2s;
+    font-size: var(--font-size);
+    padding: .3rem;
+
+    cursor: pointer;
+}
+
+.right-top-div .reply-btn a:hover {
+    opacity: .4;
+}
+
+.right-bottom-div {
+    padding: 1rem 0;
+}
+
+.right-bottom-div p span {
+    font-weight: 500;
+    color: var(--moderate-blue);
+}
+
+.section .section-commenting-div .commenting-div-img {
+    width: 10%;
+    padding: .5rem;
+}
+
+.section .section-commenting-div .commenting-div-img img {
+    width: 100%;
+}
+
+.section .section-commenting-div .form {
+    width: 90%;
+    margin: .5rem;
+
+    display: flex;
+
+}
+
+.section .section-commenting-div .form .commenting-div-content {
+    width: 80%;
+    margin:0 1rem;
+}
+
+.section .section-commenting-div .commenting-div-content textarea {
+    width: 100%;
+    border: 1px solid var(--light-gray);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    font-size: var(--font-size);
+    font-family: 'Rubik', sans-serif;
+    resize: none;
+}
+
+.section .section-commenting-div .commenting-div-content textarea:focus {
+    outline: none;
+    border-color: var(--dark-blue);
+}
+
+
+.section .section-commenting-div .commenting-div-reply-div {
+    width: 20%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.section .section-commenting-div .commenting-div-send-div button {
+    display: inline-block;
+    border: none;
+    background-color: var(--moderate-blue);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: .7rem;
+    padding: 1.2rem 2.5rem;
+    margin: 0 1rem;
+    font-weight: 700;
+    transition: all .2s;
+    font-size: var(--font-size);
+
+    cursor: pointer;
+}
+
+.section .section-commenting-div .commenting-div-send-div button:hover {
+    opacity: .4;
+}
