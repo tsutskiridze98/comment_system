@@ -1,15 +1,15 @@
 import * as data from "../data.json" assert { type: "json" };
 
 const obj = data.default;
-const commentsArr1 = data.default.comments;
-const currentUser1 = data.default.currentUser;
+const commentsArr = data.default.comments;
+const currentUser = data.default.currentUser;
 
-localStorage.setItem('obj', JSON.stringify(obj));
+// localStorage.setItem('obj', JSON.stringify(obj));
 
-const retrievedObject = JSON.parse(localStorage.getItem('obj'));
+// const retrievedObject = JSON.parse(localStorage.getItem('obj'));
 
-const commentsArr = retrievedObject.comments;
-const currentUser = retrievedObject.currentUser;
+// const commentsArr = retrievedObject.comments;
+// const currentUser = retrievedObject.currentUser;
 
 // Selectors
 const section = document.querySelector(".section");
@@ -271,7 +271,7 @@ const submitBtn = document.querySelector(".submit-send-comment");
 const textarea = document.querySelector(".textarea");
 
 submitBtn.addEventListener("click", function(e) {
-    //e.preventDefault();
+    e.preventDefault();
     let curId = 1;
     let comId = 0;
     for(let i = 0; i < commentsArr.length; i++) {
@@ -283,101 +283,136 @@ submitBtn.addEventListener("click", function(e) {
             }
         }
     }
-    console.log(curId);
-    commentsArr.push({id: curId++, content: textarea.value, createdAt: "1 month ago", score: 0, user: {
-        image: { 
-          png: `./images/avatars/image-${currentUser.username}.png`,
-          webp: `./images/avatars/image-${currentUser.username}.webp`
+
+    if(textarea.value !== "") {
+        console.log(curId);
+        commentsArr.push({id: curId++, content: textarea.value, createdAt: "1 month ago", score: 0, user: {
+            image: { 
+            png: `./images/avatars/image-${currentUser.username}.png`,
+            webp: `./images/avatars/image-${currentUser.username}.webp`
+            },
+            username: `${currentUser.username}`
         },
-        username: `${currentUser.username}`
-    },
-    replies: []
-    });
-    console.log(commentsArr);
-    localStorage.setItem('obj', JSON.stringify(obj));
+        replies: []
+        });
+        console.log(commentsArr);
+        // localStorage.setItem('obj', JSON.stringify(obj));
 
-    // const commentDiv = document.createElement("div");
-    //     commentDiv.classList.add('section-comment-div');
-    //     const comDivLeft = document.createElement("div");
-    //     comDivLeft.classList.add("comment-div-left");
-    //     const comDivRight = document.createElement("div");
-    //     comDivRight.classList.add("comment-div-right");
-    //     const comDivLeftLikes= document.createElement("div");
-    //     comDivLeftLikes.classList.add("comment-div-left-likes");
-    //     const plus = document.createElement("a");
-    //     plus.classList.add('plus');
-    //     plus.textContent = "+";
-    //     const score = document.createElement("p");
-    //     score.classList.add('score');
-    //     score.textContent = commentsArr[comId].score;
-    //     const minus = document.createElement("a");
-    //     minus.classList.add('minus');
-    //     minus.textContent = "-";
+        const commentDiv = document.createElement("div");
+        commentDiv.classList.add('section-comment-div');
+        const comDivLeft = document.createElement("div");
+        comDivLeft.classList.add("comment-div-left");
+        const comDivRight = document.createElement("div");
+        comDivRight.classList.add("comment-div-right");
+        const comDivLeftLikes= document.createElement("div");
+        comDivLeftLikes.classList.add("comment-div-left-likes");
+        const plus = document.createElement("a");
+        plus.classList.add('plus');
+        plus.textContent = "+";
+        const score = document.createElement("p");
+        score.classList.add('score');
+        score.textContent = commentsArr[comId].score;
+        const minus = document.createElement("a");
+        minus.classList.add('minus');
+        minus.textContent = "-";
 
-    //     const rightTopDiv = document.createElement("div");
-    //     rightTopDiv.classList.add("right-top-div");
+        const rightTopDiv = document.createElement("div");
+        rightTopDiv.classList.add("right-top-div");
 
-    //     const rightBottomDiv = document.createElement("div");
-    //     rightBottomDiv.classList.add("right-bottom-div");
+        const rightBottomDiv = document.createElement("div");
+        rightBottomDiv.classList.add("right-bottom-div");
 
-    //     const informationDiv = document.createElement("div");
-    //     informationDiv.classList.add("information");
+        const informationDiv = document.createElement("div");
+        informationDiv.classList.add("information");
 
-    //     const replyBtnDiv = document.createElement("div");
-    //     replyBtnDiv.classList.add("reply-btn");
+        const replyBtnDiv = document.createElement("div");
+        replyBtnDiv.classList.add("reply-btn");
 
-    //     // Information class div
+        // Information class div
 
-    //     const rightTopImg = document.createElement("div");
-    //     rightTopImg.classList.add("right-top-img");
+        const rightTopImg = document.createElement("div");
+        rightTopImg.classList.add("right-top-img");
 
-    //     const userImg = document.createElement("img");
-    //     userImg.classList.add("user-img");
-    //     userImg.setAttribute("src", commentsArr[comId].user.image.png);
-    //     userImg.setAttribute("alt", "avatar");
+        const userImg = document.createElement("img");
+        userImg.classList.add("user-img");
+        userImg.setAttribute("src", commentsArr[comId].user.image.png);
+        userImg.setAttribute("alt", "avatar");
 
-    //     const rightTopUsername = document.createElement("div");
-    //     rightTopUsername.classList.add("right-top-username");
+        const rightTopUsername = document.createElement("div");
+        rightTopUsername.classList.add("right-top-username");
 
-    //     const usernameCom = document.createElement("p");
-    //     usernameCom.classList.add("username");
-    //     usernameCom.innerHTML = `${commentsArr[comId].user.username} <span>you</span>`;
+        const usernameCom = document.createElement("p");
+        usernameCom.classList.add("username");
+        usernameCom.innerHTML = `${commentsArr[comId].user.username} <span>you</span>`;
 
-    //     const deleteCommentBtn = document.createElement("a");
-    //     deleteCommentBtn.classList.add("delete-comment");
-    //     deleteCommentBtn.innerHTML = `<img src="images/icon-delete.svg" alt="reply"> Delete`;
+        const deleteCommentBtn = document.createElement("a");
+        deleteCommentBtn.classList.add("delete-comment");
+        deleteCommentBtn.innerHTML = `<img src="images/icon-delete.svg" alt="reply"> Delete`;
 
-    //     const editCommentBtn = document.createElement("a");
-    //     editCommentBtn.classList.add("edit-comment");
-    //     editCommentBtn.innerHTML = `<img src="images/icon-edit.svg" alt="reply"> Edit`;
+        const editCommentBtn = document.createElement("a");
+        editCommentBtn.classList.add("edit-comment");
+        editCommentBtn.innerHTML = `<img src="images/icon-edit.svg" alt="reply"> Edit`;
 
-    //     replyBtnDiv.append(deleteCommentBtn, editCommentBtn);
+        replyBtnDiv.append(deleteCommentBtn, editCommentBtn);
 
-    //     const rightTopDate = document.createElement("div");
-    //     rightTopDate.classList.add("right-top-date");
+        const rightTopDate = document.createElement("div");
+        rightTopDate.classList.add("right-top-date");
 
-    //     const commentDate = document.createElement("p");
-    //     commentDate.classList.add("comment-date");
-    //     commentDate.textContent = commentsArr[comId].createdAt;
+        const commentDate = document.createElement("p");
+        commentDate.classList.add("comment-date");
+        commentDate.textContent = commentsArr[comId].createdAt;
 
-    //     // Right bottom div
+        // Right bottom div
 
-    //     const textContent = document.createElement("p");
-    //     textContent.classList.add("text-content");
-    //     textContent.textContent = commentsArr[comId].content;
+        const textContent = document.createElement("p");
+        textContent.classList.add("text-content");
+        textContent.textContent = commentsArr[comId].content;
 
-    //     // Append
-    //     section.appendChild(commentDiv);
+        // Append
+        section.insertAdjacentElement("beforeend",commentDiv);
 
-    //     commentDiv.append(comDivLeft, comDivRight);
-    //     comDivLeft.appendChild(comDivLeftLikes);
-    //     comDivLeftLikes.append(plus, score, minus);
-    //     comDivRight.append(rightTopDiv, rightBottomDiv);
-    //     rightTopDiv.append(informationDiv, replyBtnDiv);
-    //     informationDiv.append(rightTopImg, rightTopUsername, rightTopDate);
-    //     rightTopImg.appendChild(userImg);
-    //     rightTopUsername.appendChild(usernameCom);
-    //     rightTopDate.appendChild(commentDate);
-    //     rightBottomDiv.appendChild(textContent);
-
+        commentDiv.append(comDivLeft, comDivRight);
+        comDivLeft.appendChild(comDivLeftLikes);
+        comDivLeftLikes.append(plus, score, minus);
+        comDivRight.append(rightTopDiv, rightBottomDiv);
+        rightTopDiv.append(informationDiv, replyBtnDiv);
+        informationDiv.append(rightTopImg, rightTopUsername, rightTopDate);
+        rightTopImg.appendChild(userImg);
+        rightTopUsername.appendChild(usernameCom);
+        rightTopDate.appendChild(commentDate);
+        rightBottomDiv.appendChild(textContent);
+        textarea.value = "";
+    }
 });
+
+////////////////// Delete 
+
+const deleteBtn = document.querySelectorAll(".delete-comment");
+
+// deleteBtn.addEventListener("click", function(e) {
+//     e.preventDefault();
+
+// })
+
+
+
+
+
+
+//////// Score 
+
+const plus = document.querySelectorAll(".plus");
+const minus = document.querySelectorAll(".minus");
+const score = document.querySelectorAll(".score");
+
+plus.forEach((el, i) => {
+    el.addEventListener("click", function(e){
+        score[i].innerHTML++;
+    })
+})
+
+minus.forEach((el, i) => {
+    el.addEventListener("click", function(e){
+        score[i].innerHTML--;
+    })
+})
